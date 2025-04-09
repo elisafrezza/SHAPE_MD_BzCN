@@ -1,0 +1,31 @@
+from __future__ import print_function
+import mdtraj as md
+import numpy as np
+import sys
+import subprocess
+import math
+
+def angles(traj):
+    topology = traj.topology
+    nres=traj.n_residues
+    nch=traj.n_chains
+    h,w = 501000, 50;
+    ang0=np.zeros((h, w)) 
+    ang1=np.zeros((h, w)) 
+    ang2=np.zeros((h, w))
+    ang3=np.zeros((h, w))
+    
+    k0=-1
+    k1=-1
+    k2=-1
+    k3=-1
+    
+    for ii,rr in enumerate(topology.residues):
+        
+        bb1='%4d' % rr.index
+        bb2='%4d' % rr.chain.index
+        print(ii,rr)
+        idxs = [[0,0,0] for x in range(10)]
+
+            
+        if(ii < nres-1):
